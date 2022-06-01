@@ -30,6 +30,6 @@ const useFetch = () => {
         request,
 
     };
-}
+};
 
-export default useFetch
+export default useFetch;
