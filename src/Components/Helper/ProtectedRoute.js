@@ -4,7 +4,7 @@ import { UserContext } from '../../UserContext'
 
 const ProtectedRoute = ({ children }) => {
     const { login } = React.useContext(UserContext); // recuperar os dados do login do usuario
-    return login ? children : <Navigate to="/login" />; // caso esteja logado irá retireciona para página especifica.
+    return login ? children : <Navigate to="/login" />; // caso esteja logado irá redireciona para página especifica.
 }
 
 export default ProtectedRoute
