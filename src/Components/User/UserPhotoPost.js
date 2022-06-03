@@ -17,40 +17,33 @@ const UserPhotoPost = () => {
   const { data, error, loading, request } = useFetch();
   const navigate = useNavigate();
 
-  // após o envio direcionar para outra página
   React.useEffect(() => {
     if (data) navigate('/conta');
   }, [data, navigate]);
-
-  //FormDataserá preenchido com as chaves/valores atuais do formulário usando um nome de propriedade de cada elemento para chaves e seu valor enviado para os valores. 
-  //Também condicionou o conteúdo de entrada do arquivo.
 
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData();
     formData.append('img', img.raw);
-    formData.append('nome', nome.value);  //adicionando uma chave/valor usando FormData.append:
+    formData.append('nome', nome.value);
     formData.append('peso', peso.value);
     formData.append('idade', idade.value);
 
-    //recuperando o token
     const token = window.localStorage.getItem('token');
-
-    // chamando o hook useFetch e rota api 
     const { url, options } = PHOTO_POST(formData, token);
     request(url, options);
   }
 
   function handleImgChange({ target }) {
     setImg({
-      preview: URL.createObjectURL(target.files[0]),  //recuperando a img para fazer um preview
-      raw: target.files[0], // pegando a posição da img
+      preview: URL.createObjectURL(target.files[0]),
+      raw: target.files[0],
     });
   }
 
   return (
     <section className={`${styles.photoPost} animeLeft`}>
-      <Head title="Posto sua Foto." />
+      <Head title="Poste sua foto" />
       <form onSubmit={handleSubmit}>
         <Input label="Nome" type="text" name="nome" {...nome} />
         <Input label="Peso" type="number" name="peso" {...peso} />

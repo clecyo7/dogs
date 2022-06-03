@@ -115,7 +115,7 @@ export function PHOTO_DELETE(id) {
 
 export function PASSWORD_LOST(body) {
   return {
-    url: `${API_URL}/api/passowrd/lost`,
+    url: API_URL + '/api/password/lost',
     options: {
       method: 'POST',
       headers: {
@@ -136,6 +136,18 @@ export function PASSWORD_RESET(body) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
+    },
+  };
+}
+
+export function STATS_GET() {
+  return {
+    url: API_URL + '/api/stats',
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+      },
     },
   };
 }

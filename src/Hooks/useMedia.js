@@ -1,24 +1,21 @@
-import React from 'react'
-
-
+import React from 'react';
 // Hooks feito para recuperar o tamanho da tela
-
 const useMedia = (media) => {
-    const [math, setMatch] = React.useState(null);
-    
-    React.useEffect(() => {
-        function changeMatch(){
-            const { matches} = window.matchMedia(media)
-            setMatch(matches)
-        }
-        changeMatch();
-        window.addEventListener('resize' , changeMatch);
-        return () => {
-            window.removeEventListener('resize', changeMatch)
-        }
-    },[media]);
+  const [match, setMatch] = React.useState(null);
 
-  return math;
+  React.useEffect(() => {
+    function changeMatch() {
+      const { matches } = window.matchMedia(media);
+      setMatch(matches);
+    }
+    changeMatch();
+    window.addEventListener('resize', changeMatch);
+    return () => {
+      window.removeEventListener('resize', changeMatch);
+    };
+  }, [media]);
+
+  return match;
 };
 
 export default useMedia;

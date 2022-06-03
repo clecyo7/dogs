@@ -6,12 +6,13 @@ const types = {
     message: 'Preencha um email válido',
   },
   password: {
-    regex : /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
-    message: 'A senha precisa ter 1 caractere maiúsculo. 1 minúsculo e 1 dígito. Com no mínimo 8 caracteres.'
+    regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
+    message:
+      'A senha precisa ter 1 caracter maíusculo, 1 minúsculo e 1 digito. Com no mínimo 8 caracteres.',
   },
   number: {
-    regex : /^\d+$/,
-    message: 'Utilize apenas Números.'
+    regex: /^\d+$/,
+    message: 'Utilize números apenas.',
   },
 };
 
@@ -20,8 +21,8 @@ const useForm = (type) => {
   const [error, setError] = React.useState(null);
 
   function validate(value) {
-    if (type === false) return true; //validar se o campo está falso ou não 
-    if (value.length === 0) { // verificar se foi preenchido
+    if (type === false) return true;
+    if (value.length === 0) {
       setError('Preencha um valor.');
       return false;
     } else if (types[type] && !types[type].regex.test(value)) {
@@ -43,8 +44,8 @@ const useForm = (type) => {
     setValue,
     onChange,
     error,
-    validate: () => validate(value), // exportando o metodo 
-    onBlur: () => validate(value), // validar quando entra no campo  ou sai do campo 
+    validate: () => validate(value),
+    onBlur: () => validate(value),
   };
 };
 

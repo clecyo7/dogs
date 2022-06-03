@@ -59,7 +59,7 @@
   height: 2px;
   border-radius: 2px;
   background: currentColor;
-  box-shadow: 0 6px currentColor, 0 -6px currentColor; /* sobreamento do button mobile - 3 linhas  */
+  box-shadow: 0 6px currentColor, 0 -6px currentColor;
   transition: 0.2s;
 }
 
